@@ -26,12 +26,11 @@ pygame.init()
 screen = pygame.display.set_mode((800, 600), pygame.OPENGL | pygame.DOUBLEBUF | pygame.HIDDEN)
 display_surface = pygame.Surface((800, 600)).convert()
 
-img = pygame.image.load("Graphics/lion.png").convert_alpha()
-
+# Creating image buffer and opengl surface:
+img = pygame.image.load("lion.png").convert_alpha()
 
 # Context for opengl pipeline and rendering with it, used to convert pygame surface to opengl:
 ctx = moderngl.create_context()
-
 
 # Convert Pygame surface to opengl texture:
 def ConvertPygameSurfaceToOpenGl(surface):
@@ -65,7 +64,6 @@ class AppState:
 
     def __init__(self, image_file: str):
         self.image = demo_utils.imread_pil(image_file)
-        # self.image = demo_utils.
 
         self.immvision_params = immvision.ImageParams()
         self.immvision_params.image_display_size = (int(immapp.em_size(22)), 0)
@@ -84,7 +82,7 @@ def demo_gui():
     static = demo_gui
 
     if static.app_state is None:
-        static.app_state = AppState("Graphics/lion.png")#demo_utils.demos_assets_folder() + "/images/house.jpg")
+        static.app_state = AppState("Graphics/lion.png")
 
 
     immvision.image(
